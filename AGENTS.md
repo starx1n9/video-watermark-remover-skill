@@ -3,15 +3,15 @@
 本仓库是一个"视频去 logo / 去字幕"的 Agent Skill，外加一组命令行脚本。给 Codex 等 AI 助手看的说明如下。
 
 ## 用户让你去掉视频里的 logo、角标、水印、字幕时
-1. **先完整阅读 [`skills/video-dewatermark/SKILL.md`](skills/video-dewatermark/SKILL.md)**，严格按其中的 8 步流程和硬规则执行。
-2. 所有脚本都要在 `skills/video-dewatermark/` 目录下运行，用法是 `python scripts/xxx.py`。
-3. 如果 `skills/video-dewatermark/config.json` 不存在，说明环境还没装好。先按下面的"首次安装"做，自检 PASS 后再干活。
+1. **先完整阅读 [`skills/video-watermark-remover/SKILL.md`](skills/video-watermark-remover/SKILL.md)**，严格按其中的 8 步流程和硬规则执行。
+2. 所有脚本都要在 `skills/video-watermark-remover/` 目录下运行，用法是 `python scripts/xxx.py`。
+3. 如果 `skills/video-watermark-remover/config.json` 不存在，说明环境还没装好。先按下面的"首次安装"做，自检 PASS 后再干活。
 4. **修补开始前，必须把蒙版预览图和识别清单给用户确认。** 不覆盖原视频，不删除用户的文件。
 5. 修补耗时较长（每分钟视频大约 5–10 分钟）。放后台运行，定时查看输出、汇报进度。
 
 ## 首次安装（在用户机器上）
 ```bash
-cd skills/video-dewatermark
+cd skills/video-watermark-remover
 # 建议先建独立环境：conda create -n vdw python=3.10 -y && conda activate vdw
 python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
 #   ↑ 报错或输出 False：让用户按显卡装 CUDA 版 PyTorch，例如

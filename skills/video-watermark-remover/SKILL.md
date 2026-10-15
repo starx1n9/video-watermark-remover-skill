@@ -1,9 +1,9 @@
 ---
-name: video-dewatermark
-description: Remove fixed logos / corner bugs / watermarks / burned-in subtitles from videos locally with ProPainter video inpainting. Auto-locates the element and when it appears, shows a mask preview for the user to confirm, inpaints, runs QC, and delivers the clean video + before/after images + a coordinates doc for placing a new logo/subtitles. 本地视频去 logo / 去角标 / 去台标 / 去水印 / 去烧录字幕。触发：「去掉视频里的 logo/角标/台标/水印」「去字幕」「把片头片尾的商标去掉」「remove watermark/logo/subtitles from video」。
+name: video-watermark-remover
+description: Remove fixed logos / corner bugs / watermarks / burned-in subtitles from videos locally with ProPainter video inpainting. Auto-locates the element and when it appears, shows a mask preview for the user to confirm, inpaints, runs QC, and delivers the clean video + before/after images + a coordinates doc for placing a new logo/subtitles. 本地视频去 logo / 去角标 / 去台标 / 去水印 / 去烧录字幕。触发：「去掉视频里的 logo/角标/台标/水印」「去字幕」「把片头片尾的商标去掉」「remove watermark/logo/subtitles from video」「video watermark remover」「hardsub remover」。
 ---
 
-# 视频去 logo / 去字幕（video-dewatermark）
+# 视频去 logo / 去字幕（video-watermark-remover）
 
 用 ProPainter 修补视频里**位置固定**的 logo、角标和烧录字幕。只裁出元素周围的 ROI 去修补，再羽化贴回原片，ROI 以外的像素不动。
 

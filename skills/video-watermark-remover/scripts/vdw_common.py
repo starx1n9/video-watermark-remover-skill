@@ -1,4 +1,4 @@
-# video-dewatermark 公共库：路径配置 / 读帧 / 蒙版存取 / ProPainter 调用 / 羽化 alpha
+# video-watermark-remover 公共库：路径配置 / 读帧 / 蒙版存取 / ProPainter 调用 / 羽化 alpha
 import os, sys, shutil, subprocess, json, numpy as np, cv2, scipy.ndimage as nd
 
 for _s in (sys.stdout, sys.stderr):                    # Windows 控制台默认 GBK，统一 utf-8 输出

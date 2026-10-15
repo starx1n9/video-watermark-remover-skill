@@ -1,8 +1,8 @@
 # 本机配置与第三方代码/权重（许可证不同，不入库）
-skills/video-dewatermark/config.json
-skills/video-dewatermark/third_party/
+skills/video-watermark-remover/config.json
+skills/video-watermark-remover/third_party/
 # 运行产物
-skills/video-dewatermark/selftest_out/
+skills/video-watermark-remover/selftest_out/
 *.mp4
 *.mov
 *.mkv

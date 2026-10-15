@@ -1,6 +1,8 @@
-# video-dewatermark
+# video-watermark-remover-skill
 
 <p align="center"><a href="README.md">简体中文</a> | <b>English</b></p>
+
+<p align="center"><b>Video watermark remover · logo remover · hardsub (burned-in subtitle) remover</b><br>Runs locally · works as an agent skill for Claude Code / Codex</p>
 
 A local toolkit for **removing logos, corner bugs, station marks and burned-in subtitles from videos**. It uses [ProPainter](https://github.com/sczhou/ProPainter) for video inpainting and is packaged as an **Agent Skill** that AI coding assistants such as Claude Code and Codex can follow step by step. Ask *"remove the logo in the top-left corner of this video"* and the assistant will:
 
@@ -48,8 +50,8 @@ The scripts also work on their own from the command line, without an AI assistan
 **Requirements**: an NVIDIA GPU (≥4 GB free VRAM recommended; CPU-only works but is very slow), Python 3.8+, git, and ffmpeg.
 
 ```bash
-git clone https://github.com/starx1n9/video-dewatermark.git
-cd video-dewatermark/skills/video-dewatermark
+git clone https://github.com/starx1n9/video-watermark-remover-skill.git
+cd video-watermark-remover-skill/skills/video-watermark-remover
 
 # 1) Create an isolated environment (conda shown; venv works too)
 conda create -n vdw python=3.10 -y
@@ -82,22 +84,22 @@ The model weights (about 200 MB) download automatically on the first run.
 
 ```bash
 # macOS / Linux
-ln -s "$(pwd)/skills/video-dewatermark" ~/.claude/skills/video-dewatermark
+ln -s "$(pwd)/skills/video-watermark-remover" ~/.claude/skills/video-watermark-remover
 # Windows (admin PowerShell, or with Developer Mode enabled)
-New-Item -ItemType SymbolicLink -Path "$HOME\.claude\skills\video-dewatermark" -Target "$PWD\skills\video-dewatermark"
+New-Item -ItemType SymbolicLink -Path "$HOME\.claude\skills\video-watermark-remover" -Target "$PWD\skills\video-watermark-remover"
 ```
 
-Then ask something like *"remove the logo in the top-left of this video"*, or run `/video-dewatermark`.
+Then ask something like *"remove the logo in the top-left of this video"*, or run `/video-watermark-remover`.
 
-**Codex and other assistants**: start the assistant in the repository root. It reads [`AGENTS.md`](AGENTS.md), which walks it through installation and the self-test before the workflow. If your assistant supports Agent Skills (the `SKILL.md` format), you can also place `skills/video-dewatermark` in its skills directory.
+**Codex and other assistants**: start the assistant in the repository root. It reads [`AGENTS.md`](AGENTS.md), which walks it through installation and the self-test before the workflow. If your assistant supports Agent Skills (the `SKILL.md` format), you can also place `skills/video-watermark-remover` in its skills directory.
 
 **What you provide**: the video file and one sentence saying what to remove. Positions and time ranges are found automatically, and **you get a mask preview to confirm before any inpainting starts**.
 
 ## Command line without an AI assistant
-The full 8-step workflow and every parameter are documented in [`skills/video-dewatermark/SKILL.md`](skills/video-dewatermark/SKILL.md). The shortest path for a top-left logo:
+The full 8-step workflow and every parameter are documented in [`skills/video-watermark-remover/SKILL.md`](skills/video-watermark-remover/SKILL.md). The shortest path for a top-left logo:
 
 ```bash
-cd skills/video-dewatermark
+cd skills/video-watermark-remover
 python scripts/locate_static.py --video in.mp4 --out-dir work                 # find static pixels; inspect work/static_rel.png
 python scripts/mask_logo.py --rel work/static_rel.npy --box 0,0,200,90 --thresh 0.6 --preview in.mp4@100 --out-dir work
 python scripts/shots.py in.mp4 --out work/bounds.json                          # split at hard cuts and dissolves

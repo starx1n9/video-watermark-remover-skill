@@ -1,6 +1,8 @@
-# video-dewatermark
+# video-watermark-remover-skill
 
 <p align="center"><b>简体中文</b> | <a href="README.en.md">English</a></p>
+
+<p align="center"><b>视频去水印 · 去 logo · 去台标 · 去硬字幕</b>　|　本地运行 · AI 助手（Claude Code / Codex）可直接调用</p>
 
 本地视频**去 logo / 角标 / 台标 / 烧录字幕**的工具集。底层用 [ProPainter](https://github.com/sczhou/ProPainter) 做视频修补，组织成一个 AI 编程助手（Claude Code、Codex 等）能照着执行的 **Agent Skill**。你只要说一句"把这个视频左上角的 logo 去掉"，助手会依次完成：
 
@@ -48,8 +50,8 @@
 **需要**：NVIDIA 显卡（建议空闲显存 ≥4GB；只用 CPU 也能跑但非常慢）、Python 3.8+、git、ffmpeg。
 
 ```bash
-git clone https://github.com/starx1n9/video-dewatermark.git
-cd video-dewatermark/skills/video-dewatermark
+git clone https://github.com/starx1n9/video-watermark-remover-skill.git
+cd video-watermark-remover-skill/skills/video-watermark-remover
 
 # 1) 建一个独立环境（conda 示例；用 venv 也行）
 conda create -n vdw python=3.10 -y
@@ -76,22 +78,22 @@ ffmpeg 安装方法：Windows 用 `winget install Gyan.FFmpeg`，macOS 用 `brew
 
 ```bash
 # macOS / Linux
-ln -s "$(pwd)/skills/video-dewatermark" ~/.claude/skills/video-dewatermark
+ln -s "$(pwd)/skills/video-watermark-remover" ~/.claude/skills/video-watermark-remover
 # Windows (管理员 PowerShell 或开启开发者模式)
-New-Item -ItemType SymbolicLink -Path "$HOME\.claude\skills\video-dewatermark" -Target "$PWD\skills\video-dewatermark"
+New-Item -ItemType SymbolicLink -Path "$HOME\.claude\skills\video-watermark-remover" -Target "$PWD\skills\video-watermark-remover"
 ```
 
-放好之后直接说"去掉这个视频左上角的 logo"就会触发，也可以输入 `/video-dewatermark`。
+放好之后直接说"去掉这个视频左上角的 logo"就会触发，也可以输入 `/video-watermark-remover`。
 
-**Codex 和其他助手**：在本仓库根目录启动助手，它会读取 [`AGENTS.md`](AGENTS.md)，按里面的指引完成安装、自检，再按流程干活。如果你用的助手支持 Agent Skills（`SKILL.md` 格式），也可以把 `skills/video-dewatermark` 放进它的 skills 目录。
+**Codex 和其他助手**：在本仓库根目录启动助手，它会读取 [`AGENTS.md`](AGENTS.md)，按里面的指引完成安装、自检，再按流程干活。如果你用的助手支持 Agent Skills（`SKILL.md` 格式），也可以把 `skills/video-watermark-remover` 放进它的 skills 目录。
 
 **你需要提供的**：视频文件，再加一句话说明要去掉什么。时间段和位置会自动找出来，**修补开始前会先给你看蒙版预览，等你确认**。
 
 ## 不用 AI、直接命令行
-完整的 8 步流程和每一步的参数含义见 [`skills/video-dewatermark/SKILL.md`](skills/video-dewatermark/SKILL.md)。下面是最短路径，以去掉左上角 logo 为例：
+完整的 8 步流程和每一步的参数含义见 [`skills/video-watermark-remover/SKILL.md`](skills/video-watermark-remover/SKILL.md)。下面是最短路径，以去掉左上角 logo 为例：
 
 ```bash
-cd skills/video-dewatermark
+cd skills/video-watermark-remover
 python scripts/locate_static.py --video in.mp4 --out-dir work                 # 找出不动的像素，看 work/static_rel.png
 python scripts/mask_logo.py --rel work/static_rel.npy --box 0,0,200,90 --thresh 0.6 --preview in.mp4@100 --out-dir work
 python scripts/shots.py in.mp4 --out work/bounds.json                          # 按硬切和转场分段
