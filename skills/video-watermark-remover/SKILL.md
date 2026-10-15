@@ -1,11 +1,11 @@
 ---
 name: video-watermark-remover
-description: Remove fixed logos / corner bugs / watermarks / burned-in subtitles from videos locally with ProPainter video inpainting. Auto-locates the element and when it appears, shows a mask preview for the user to confirm, inpaints, runs QC, and delivers the clean video + before/after images + a coordinates doc for placing a new logo/subtitles. 本地视频去 logo / 去角标 / 去台标 / 去水印 / 去烧录字幕。触发：「去掉视频里的 logo/角标/台标/水印」「去字幕」「把片头片尾的商标去掉」「remove watermark/logo/subtitles from video」「video watermark remover」「hardsub remover」。
+description: Remove fixed logos / corner bugs / watermarks / burned-in subtitles from videos locally with ProPainter video inpainting. Auto-locates the element and when it appears, shows a mask preview for the user to confirm, inpaints, runs QC, and delivers the clean video + before/after images + a coordinates doc for placing a new logo/subtitles. 本地视频去 logo / 去角标 / 去台标 / 去水印 / 去字幕。触发：「去掉视频里的 logo/角标/台标/水印」「去字幕」「把片头片尾的商标去掉」「remove watermark/logo/subtitles from video」「video watermark remover」「hardsub remover」。
 ---
 
 # 视频去 logo / 去字幕（video-watermark-remover）
 
-用 ProPainter 修补视频里**位置固定**的 logo、角标和烧录字幕。只裁出元素周围的 ROI 去修补，再羽化贴回原片，ROI 以外的像素不动。
+用 ProPainter 修补视频里**位置固定**的 logo、角标和字幕（压在画面上的）。只裁出元素周围的 ROI 去修补，再羽化贴回原片，ROI 以外的像素不动。
 
 > ⚠ ProPainter 的许可证是 S-Lab License 1.0：**只允许非商业用途**，商用要联系原作者授权。
 > 只用于你有权处理的素材。
@@ -33,7 +33,7 @@ python scripts/selftest.py       # 合成测试视频跑完整流程，和真值
 
 ## 能力边界（开工前对照，超出的要先告诉用户）
 - ✅ 固定位置的 logo、角标、台标，包括半透明的、淡入淡出的、在片头片尾转场里被拉糊的。
-- ✅ 固定位置、水平居中、单行的烧录字幕，白字或深色字，带不带阴影都行。
+- ✅ 固定位置、水平居中、单行的字幕（压在画面上的），白字或深色字，带不带阴影都行。
 - ⚠️ 会移动或缩放的 logo、滚动字幕、多行字幕、不居中的字幕：脚本不能自动跟踪，需要用户指出时间段，再用 `--block`、`--grow-from` 手工处理，效果会打折扣。
 - ⚠️ 画面里本来就有的文字（标牌、屏幕上的字），和要去掉的元素重叠时会被一起抹糊。要在识别清单里提醒用户。
 - 需要 NVIDIA GPU，显存最好空闲 4GB 以上。只用 CPU 也能跑，但非常慢。

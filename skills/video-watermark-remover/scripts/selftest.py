@@ -1,4 +1,4 @@
-# 端到端自检：合成一段"已知干净真值"的测试视频(平移纹理 + 中途淡入淡出转场 + 半透明假 logo + 烧录假字幕)，
+# 端到端自检：合成一段"已知干净真值"的测试视频(平移纹理 + 中途淡入淡出转场 + 半透明假 logo + 假字幕)，
 # 按 SKILL.md 的流程跑完 定位->蒙版->分段->修补(logo)->字幕蒙版->修补(字幕)->质检，再和真值比对给出 PASS/FAIL。
 # 用法: python scripts/selftest.py [--work DIR] [--docs DIR(把对比图拷过去，给 README 用)]
 import argparse, os, sys, subprocess, shutil, json, time, numpy as np, cv2, scipy.ndimage as nd

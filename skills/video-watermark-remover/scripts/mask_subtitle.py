@@ -1,5 +1,5 @@
 # 第3步(字幕) 逐帧字幕笔画蒙版：亮笔画 top-hat + 时间稳定 + 居中单行约束 + 同句同蒙版
-# 适用：固定位置、水平居中、单行、浅色字(白字带阴影)的烧录字幕。深色字加 --dark
+# 适用：固定位置、水平居中、单行、浅色字(白字带阴影)的字幕(压在画面上的)。深色字加 --dark
 # 用法: python mask_subtitle.py VIDEO --out-dir DIR [--rows 489,518] [--center 480] [--preview-times 3,12,20,...]
 #   不给 --rows 时自动在画面下 40% 找字幕行
 import argparse, os, json, numpy as np, cv2
