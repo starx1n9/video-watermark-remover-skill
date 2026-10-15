@@ -1,5 +1,7 @@
 # video-dewatermark
 
+<p align="center"><b>简体中文</b> | <a href="README.en.md">English</a></p>
+
 本地视频**去 logo / 角标 / 台标 / 烧录字幕**的工具集。底层用 [ProPainter](https://github.com/sczhou/ProPainter) 做视频修补，组织成一个 AI 编程助手（Claude Code、Codex 等）能照着执行的 **Agent Skill**。你只要说一句"把这个视频左上角的 logo 去掉"，助手会依次完成：
 
 1. 自动定位元素的位置，以及它在哪些时间段出现；
@@ -9,8 +11,6 @@
 5. 交付成片、前后对比图，以及一份坐标文档（方便你叠新 logo、新字幕）。
 
 脚本也可以脱离 AI 助手，直接在命令行用。
-
-> **A local toolkit + agent skill to remove fixed logos, corner bugs and burned-in subtitles from videos with ProPainter.** It auto-locates the element, asks you to confirm a mask preview, inpaints shot-by-shot (transitions are split to avoid cross-shot artifacts), runs numeric + visual QC, and delivers the clean video plus a coordinates doc. See the English summary at the bottom.
 
 ## 效果展示
 
@@ -114,11 +114,3 @@ python scripts/qc.py --orig in.mp4 --out in-nologo.mp4 --mask work/mask.npy --bo
 - 本仓库代码采用 **MIT** 许可证，见 [LICENSE](LICENSE)。
 - **ProPainter 不包含在本仓库里**，由 `setup_env.py` 从官方仓库拉取。它采用 **S-Lab License 1.0，仅限非商业用途**，商用需要联系原作者授权，详见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 - 请只处理你有权处理的素材。去除他人作品上的水印或版权标识，可能违反版权法或平台条款。
-
----
-
-## English summary
-- **What**: agent skill + CLI scripts that remove *fixed-position* logos/watermarks and *centered single-line* burned-in subtitles using ProPainter, cropping only a ROI around the element and feather-compositing it back.
-- **Install**: create a Python env, install CUDA PyTorch, `pip install -r requirements.txt`, then `python scripts/setup_env.py` (clones pinned ProPainter, writes `config.json`) and `python scripts/selftest.py` (synthetic end-to-end test with ground truth → PASS/FAIL).
-- **Use with agents**: symlink `skills/video-dewatermark` into your agent's skills dir (e.g. `~/.claude/skills/`), or open the repo root with Codex and it will follow `AGENTS.md`.
-- **License**: MIT for this repo. ProPainter is **non-commercial only** (S-Lab License 1.0) and is downloaded separately.
