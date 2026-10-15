@@ -12,9 +12,30 @@
 
 > **A local toolkit + agent skill to remove fixed logos, corner bugs and burned-in subtitles from videos with ProPainter.** It auto-locates the element, asks you to confirm a mask preview, inpaints shot-by-shot (transitions are split to avoid cross-shot artifacts), runs numeric + visual QC, and delivers the clean video plus a coordinates doc. See the English summary at the bottom.
 
-![自检：合成视频的修补前后对比](docs/images/selftest_before_after.jpg)
+## 效果展示
 
-<sub>上图是自带自检生成的合成视频（平移纹理 + 淡入淡出转场 + 半透明假 logo + 假字幕），左边是修补前，右边是修补后。</sub>
+**① 企业宣传片：画面正中的大 logo**（航拍运镜，logo 是半透明放射图标 + 品牌名 + 英文名）
+
+![居中 logo 去除：航拍片尾](docs/showcase/corporate_center_logo.gif)
+
+**② 企业宣传片：左上角角标 + 底部烧录字幕**（126 秒、160 个镜头段，全程去掉，方便重新配英文字幕）
+
+![左上角标 + 字幕去除](docs/showcase/corporate_corner_logo_and_subtitles.gif)
+
+**③ AI 生成视频（Veo / Gemini）右下角的星标水印**
+
+![Veo/Gemini 星标去除](docs/showcase/veo_gemini_watermark.gif)
+
+<details>
+<summary>静态对比大图（点击展开）</summary>
+
+![居中 logo](docs/showcase/corporate_center_logo.jpg)
+![角标 + 字幕](docs/showcase/corporate_corner_logo_and_subtitles.jpg)
+![Veo/Gemini 星标，下方是放大](docs/showcase/veo_gemini_watermark.jpg)
+![自检：合成视频](docs/images/selftest_before_after.jpg)
+</details>
+
+<sub>① 和 ② 的企业宣传片素材已获版权方授权，仅作效果演示，请勿另作他用。③ 只去掉画面上**可见**的星标；Google 嵌在 Veo 视频里的不可见 SynthID 水印不受影响。</sub>
 
 ## 能做什么 / 不能做什么
 - ✅ 固定位置的 logo、角标、台标，包括半透明的、淡入淡出的，以及片头片尾转场里被拉糊的。
