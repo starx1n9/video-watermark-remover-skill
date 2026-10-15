@@ -1,0 +1,4 @@
+# 本工具脚本依赖（PyTorch 请另按显卡装 CUDA 版，见 README；ProPainter 的其余依赖由 setup_env.py 安装）
+numpy
+scipy
+opencv-python
